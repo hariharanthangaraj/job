@@ -1,0 +1,36 @@
+<div class="job-page-body">
+	<div class="container scrollable-cards">
+		<div class="row">
+            <% jobs.forEach(job => { %>
+			<div class="col-md-4">
+				<div class="card job-card">
+					<div class="card-header">
+						<i class="fas fa-building"></i> <%= job.companyName %>
+					</div>
+					<div class="card-body">
+						<h5 class="card-title"><%= job.jobDesignation %> | <%= job.jobCategory %> </h5>
+						<p class="card-text">Location: <%= job.jobLocation %></p>
+						<p class="card-text">Salary Range: ₹ <%= job.salary %></p>
+						<p class="card-text">
+							Skills Required:
+                            <% job.skillsRequired.forEach(skill => { %>
+							<span class="badge badge-pill badge-light"
+								><%= skill %></span
+							>
+                            <% }) %>
+						</p>
+						<a href="/jobs/<%=job.id%>" class="btn btn-primary">Learn More</a>
+					</div>
+				</div>
+			</div>
+            <% }) %>
+			
+			</div>
+		</div>
+       
+        <% if (userEmail) { %>
+            <a href="/create-job" class="action-button btn btn-primary fixed-bottom fixed-right m-3"> <i class="fas fa-plus"></i> </a>
+        <% } %>
+    
+	</div>
+</div>

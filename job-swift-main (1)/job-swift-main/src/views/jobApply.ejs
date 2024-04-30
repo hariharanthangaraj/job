@@ -1,0 +1,86 @@
+<div class="job-application-body">
+	<!-- Application Form Container -->
+	<div class="container application-form-container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Application Form -->
+				<form method="post" action="/apply/<%=jobId%>" enctype="multipart/form-data">
+					<!-- Title -->
+					<h2 class="text-center mb-5">
+						Applying for <span class="text-primary"><%= designation %></span> at
+						<span class="text-primary"><%= companyName %></span>
+					</h2>
+
+					<!-- Name of Applicant -->
+					<div class="form-group">
+						<label for="applicantName">Name of Applicant</label>
+                        <input type="hidden" name="id" value="<%= jobId %>">
+						<input
+							type="text"
+							class="form-control"
+							id="name"
+							placeholder="Enter your name"
+                            name="name"
+                            minlength="3"
+							required
+						/>
+					</div>
+
+					<!-- Email -->
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input
+							type="email"
+							class="form-control"
+							id="email"
+                            name="email"
+							placeholder="Enter your email"
+							required
+						/>
+					</div>
+
+					<!-- Phone No -->
+					<div class="form-group">
+						<label for="phone">Phone No</label>
+						<input
+							type="tel"
+							class="form-control"
+							id="phone"
+                            name="contact"
+                            pattern="[0-9]{10}"
+							placeholder="Enter your phone number"
+							required
+						/>
+					</div>
+
+					<!-- Resume File -->
+					<div class="form-group">
+						<label for="resume">Resume File</label>
+						<input
+							type="file"
+							class="form-control-file"
+							id="resume"
+                            name="resume"
+							accept=".pdf, .doc, .docx"
+							required
+						/>
+					</div>
+
+					<!-- Submit and Cancel Buttons -->
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary">
+							Apply
+						</button>
+						<button
+							type="button"
+							class="btn btn-outline-light"
+							onclick="window.history.back()"
+						>
+							Cancel
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

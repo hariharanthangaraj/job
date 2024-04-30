@@ -1,0 +1,168 @@
+<div class="create-job-form-body">
+	<!-- Job Application Form Container -->
+	<div class="container job-application-form-container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Job Application Form -->
+				<form method="post" action="/jobs/<%=job.id %>/update">
+					<!-- Title -->
+					<h2 class="text-center">Update Job</h2>
+
+					<!-- Company Name -->
+					<div class="form-group">
+						<label for="companyName">Company Name</label>
+						<input
+							type="text"
+							class="form-control"
+							id="companyName"
+							name="companyName"
+                            minlength="3"
+							maxlength="15"
+							placeholder="Enter company name"
+							value="<%= job.companyName %>"
+							required
+						/>
+					</div>
+
+					<!-- Designation -->
+					<div class="form-group">
+						<label for="designation">Designation</label>
+						<input
+							type="text"
+							class="form-control"
+							id="designation"
+							name="jobDesignation"
+                            minlength="4"
+							maxlength="15"
+							placeholder="Enter Designation"
+							value="<%= job.jobDesignation %>"
+							required
+						/>
+					</div>
+
+					<!-- Category -->
+					<div class="form-group">
+						<label for="category">Category</label>
+						<input
+							type="text"
+							class="form-control"
+							id="category"
+							name="jobCategory"
+                            minlength="4"
+							maxlength="15"
+							value="<%= job.jobCategory %>"
+							placeholder="Enter Designation category"
+							required
+						/>
+					</div>
+
+					<!-- Location -->
+					<div class="form-group">
+						<label for="location">Location</label>
+						<input
+							type="text"
+							class="form-control"
+							id="location"
+							name="jobLocation"
+                            minlength="3"
+							value="<%= job.jobLocation %>"
+							placeholder="Enter location"
+							required
+						/>
+					</div>
+
+					<!-- Salary -->
+					<div class="form-group">
+						<label for="salary">Salary</label>
+						<input
+							type="text"
+							class="form-control"
+							id="salary"
+							name="salary"
+                            minlength="3"
+							value="<%= job.salary %>"
+							placeholder="Enter salary Range"
+							required
+						/>
+					</div>
+
+					<!-- Deadline for Applying -->
+					<div class="form-group">
+						<label for="deadline">Deadline for Applying</label>
+						<input
+							type="date"
+							class="form-control"
+							id="deadline"
+							name="applyBy"
+							value="<%= job.applyBy %>"
+                            min="<%= new Date().toISOString().slice(0, 10)%>"
+							required
+						/>
+					</div>
+
+					<!-- No of Openings -->
+					<div class="form-group">
+						<label for="openings">No of Openings</label>
+						<input
+							type="number"
+							class="form-control"
+							id="openings"
+							name="numberOfOpenings"
+							placeholder="Enter number of openings"
+							min="1"
+							value="<%= job.numberOfOpenings %>"
+							required
+						/>
+					</div>
+
+					<!-- Skills Required (Multiple Checkboxes in a Grid) -->
+					<div class="form-group">
+						<label>Skills Required</label>
+						<div class="skills-checkboxes">
+							<% skills.forEach((skill) => { %>
+							<div class="form-check">
+								<% if(job.skillsRequired.findIndex(s => s === skill) != -1) { %>
+								<input
+									type="checkbox"
+									class="form-check-input"
+									id="html"
+									name="<%= skill %>"
+									checked
+								/>
+								<% } else { %>
+								<input
+									type="checkbox"
+									class="form-check-input"
+									id="html"
+									name="<%= skill %>"
+								/>
+								<% } %>
+								<label
+									class="form-check-label"
+									for="<%= skill %>"
+									%
+								>
+									<%= skill %></label
+								>
+							</div>
+							<% }) %>
+						</div>
+					</div>
+					<!-- Update and Cancel Buttons -->
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary">
+							Update
+						</button>
+						<button
+							type="button"
+							class="btn btn-outline-light"
+							onclick="window.history.back()"
+						>
+							Cancel
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

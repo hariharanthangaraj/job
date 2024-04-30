@@ -1,0 +1,132 @@
+<div class="job-details-body">
+	<!-- Job Details Container -->
+	<div class="container job-details-container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Job Details Header -->
+				<div class="job-details-header">
+					<h2 class="text-primary">
+						<i class="fas fa-briefcase job-details-icon"></i>
+						<%= job.companyName %>
+					</h2>
+					<p>
+						<span class="text-primary">
+							<i class="fas fa-user-tie job-details-icon"></i>
+							Role:
+						</span>
+						<%= job.jobDesignation %> | <%= job.jobCategory %>
+					</p>
+					<p>
+						<span class="text-primary">
+							<i
+								class="fas fa-map-marker-alt job-details-icon"
+							></i>
+							Location:
+						</span>
+						<%= job.jobLocation %>
+					</p>
+				</div>
+
+				<!-- Job Details Content -->
+				<div>
+					<p>
+						<span class="text-primary">
+							<i
+								class="fas fa-money-bill-wave job-details-icon"
+							></i>
+							Salary:
+						</span>
+						₹ <%= job.salary %>
+					</p>
+					<p>
+						<span class="text-primary">
+							<i class="far fa-calendar-alt job-details-icon"></i>
+							Apply By:
+						</span>
+						<%= applyBy %>
+					</p>
+					<p>
+						<span class="text-primary">
+							<i class="fas fa-users job-details-icon"></i> No. of
+							Openings:
+						</span>
+						<%= job.numberOfOpenings %>
+					</p>
+					<p>
+						<span class="text-primary">
+							<i class="fas fa-user-friends job-details-icon"></i>
+							No. of Applicants:
+						</span>
+						<%= job.applicants.length %>
+					</p>
+					<p>
+						<span class="text-primary">
+							<i class="fas fa-code job-details-icon"></i> Skills
+							Required:
+						</span>
+						<% job.skillsRequired.forEach(skill => { %>
+						<button
+							type="button"
+							class="btn btn-outline-light btn-sm"
+						>
+							<%= skill %>
+						</button>
+						<% }) %>
+					</p>
+					<p>
+						<span class="text-primary">
+							<i class="far fa-clock job-details-icon"></i>
+							Posted:
+						</span>
+						<%= job.diff %>
+					</p>
+				</div>
+
+				<!-- Apply Now Button -->
+				<div class="text-center">
+					<a
+						type="button"
+						class="btn btn-primary"
+						href="/apply/<%=job.id%>"
+					>
+						Apply Now
+					</a>
+				</div>
+			</div>
+			<% if (userEmail) { %>
+
+			<a
+				href="/jobs/<%=job.id%>/applicants"
+				class="action-button ab3 btn btn-success fixed-bottom fixed-right m-3 mb-5"
+			>
+				<i class="fas fa-user-friends"></i>
+			</a>
+			<a
+				href="/jobs/<%=job.id%>/update"
+				class="action-button ab1 btn btn-primary fixed-bottom fixed-right m-3 mb-5"
+			>
+				<i class="fas fa-pen"></i>
+			</a>
+			<button
+				class="action-button btn btn-danger fixed-bottom fixed-right m-3"
+				onclick="promptDelete()"
+			>
+				<i class="fas fa-trash"></i>
+			</button>
+			<% } %>
+			<input type="hidden" id="jobId" value="<%=job.id%>" />
+			<input
+				type="hidden"
+				id="jobDesignation"
+				value="<%=job.jobDesignation%>"
+			/>
+			<input
+				type="hidden"
+				id="companyName"
+				value="<%=job.companyName%>"
+			/>
+		</div>
+	</div>
+</div>
+
+<script src="/js/uiFunctions.js"></script>
